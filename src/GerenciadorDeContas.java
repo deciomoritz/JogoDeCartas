@@ -12,13 +12,8 @@ public class GerenciadorDeContas {
 	public boolean adicionar(Conta c) {
 		return contas.add(c);
 	}
-	
-	public boolean existe(Conta c) {
-		for (Conta conta : contas) {
-			if(conta.equal(c))
-				return true;
-		}
-		return false;
-	}
 
+	public boolean existe(Conta c) {
+		return contas.contains(c);
+	}
 }
