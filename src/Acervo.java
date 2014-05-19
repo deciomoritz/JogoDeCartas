@@ -16,14 +16,6 @@ public class Acervo {
 		listaDeCartas.add(c3);
 	}
 	
-	public ArrayList<Carta> mostrarAcervo() {
-		ArrayList<Carta> copiaLista = new ArrayList<Carta>();
-		for (int i = 0; i < listaDeCartas.size() ; i++) {
-			copiaLista.add(listaDeCartas.get(i));
-		}
-		return copiaLista;
-	}
-	
 	public Carta getCarta(int i){
 		return new Carta(listaDeCartas.get(i));
 	}

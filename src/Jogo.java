@@ -1,22 +1,23 @@
-
-
 import java.util.ArrayList;
 
 public class Jogo {
 	
-	private FabricaConta f;
 	private GerenciadorDeContas g;
 	private Validador v;
 	private ListaDeBaralhos l;
 	private Acervo a;
 	
+	private Baralho baralhoTemp;
+	
 	public Jogo() {
-		// TODO
-		f = new FabricaConta();
 		g = new GerenciadorDeContas();
 		v = new Validador();
 		l = new ListaDeBaralhos();
 		a = new Acervo();
+	}
+	
+	public void init(){
+		new Jogo();
 	}
 	
 	public void remover(Carta c, Baralho b) {
@@ -25,7 +26,7 @@ public class Jogo {
 	}
 	
 	public boolean criarConta(String login, String senha) {
-		Conta c = f.criar(login, senha);
+		Conta c = FabricaConta.criar(login, senha);
 		return g.adicionar(c);
 	}
 	
@@ -38,45 +39,35 @@ public class Jogo {
 		l.adicionar(b);
 	}
 	
-	public void editarBaralho(Baralho b) {
-		Decisao d = Decisao.NÃO_TOMADA;
-		
+	public void editarBaralho(Baralho b, Carta c, Decisao d) {
 		while(d != Decisao.TERMINAR) {
 			d = acao();
 			
-			if(d == Decisao.REMOVER) {
-				Carta c = new Carta(); // Aqui pedir a visão.
+			switch (d) {
+			case REMOVER:
 				this.remover(c, b);
-			}
-			
-			if(d == Decisao.ADICIONAR) {
-				Carta c = new Carta(); // Aqui pedir a visão.
+				break;
+			case ADICIONAR:
 				this.adicionar(c, b);
+				break;
+
+			default:
+				break;
 			}
-		}
-		
-		if(v.validar(b)) {
-			this.salvar(b);
 		}
 	}
-	
+
 	public boolean montar(String nome) {
-		
 		if(!l.existe(nome)){
-			Baralho novo_b = new Baralho(nome);
-			this.editarBaralho(novo_b);
+			baralhoTemp = new Baralho(nome);
 			return true;
 		}
 		return false;
 	}
 	
 	public boolean logar(String login, String senha) {
-		Conta c = f.criar(login, senha);
+		Conta c = FabricaConta.criar(login, senha);
 		return g.existe(c);
-	}
-	
-	public ArrayList<Carta> copiarAcervo() {
-		return a.mostrarAcervo();
 	}
 	
 	public Decisao acao() {
