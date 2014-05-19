@@ -1,23 +1,25 @@
 
-
 public class Validador {
 	
 	public Validador() {
-		// TODO
 	}
 	
 	public boolean validar(Baralho b) {
-		// TODO
-		return false;
+		if(!validarQuantidade(b))
+			return false;
+		return validarRepetidas(b);
 	}
 	
 	private boolean validarQuantidade(Baralho b) {
-		// TODO
-		return false;
+		if(b.compararTamanho(MAX)<0)
+			return false;
+		return b.compararTamanho(MIN)>0;
 	}
 	
 	private boolean validarRepetidas(Baralho b) {
-		// TODO
+		for(int i=0;b.compararTamanho(i)>0;i++){
+			
+		}
 		return false;
 	}
 
