@@ -1,7 +1,7 @@
 public class Carta {
 	
 	private String nome;
-	private String descrição;
+	private String descricao;
 	private Tipo t;
 	
 	public Carta() {
