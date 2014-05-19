@@ -7,12 +7,15 @@ public class Acervo {
 	private ArrayList<Carta> listaDeCartas;
 	
 	public Acervo() {
-		// TODO
+		listaDeCartas = new ArrayList<Carta>();
 	}
 	
 	public ArrayList<Carta> mostrarAcervo() {
-		// TODO
-		return null;
+		ArrayList<Carta> copiaLista = new ArrayList<Carta>();
+		for (int i = 0; i < listaDeCartas.size() ; i++) {
+			copiaLista.add(listaDeCartas.get(i));
+		}
+		return copiaLista;
 	}
 
 }
