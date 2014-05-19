@@ -10,12 +10,12 @@ public class GerenciadorDeContas {
 		// TODO
 	}
 	
-	public boolean adicionar() {
+	public boolean adicionar(Conta c) {
 		// TODO
 		return false;
 	}
 	
-	public boolean existe() {
+	public boolean existe(Conta c) {
 		// TODO
 		return false;
 	}
