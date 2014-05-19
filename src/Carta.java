@@ -1,23 +1,19 @@
-
-
 public class Carta {
 	
 	private String nome;
-	private String descriÃ§Ã£o;
+	private String descrição;
 	private Tipo t;
 	
 	public Carta() {
-		// TODO
+		//TODO
 	}
 	
 	public String getNome() {
-		// TODO
-		return null;
+		return nome;
 	}
 	
 	public ExemplarDeCarta getExemplar() {
-		// TODO
-		return null;
+		return new ExemplarDeCarta(this);
 	}
 
 }
