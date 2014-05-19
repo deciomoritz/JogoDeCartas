@@ -13,7 +13,7 @@ public class Validador {
 	private boolean validarQuantidade(Baralho b) {
 		if(b.compararTamanho(Config.MAX)<0)
 			return false;
-		return b.compararTamanho(Config.MIM)>0;
+		return b.compararTamanho(Config.MIN)>0;
 	}
 	
 	private boolean validarRepetidas(Baralho b) {
