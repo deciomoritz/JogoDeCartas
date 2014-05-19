@@ -1,16 +1,13 @@
-
-
 public class ExemplarDeCarta {
 	
 	private Carta c;
 	
-	public ExemplarDeCarta() {
-		// TODO
+	public ExemplarDeCarta(Carta c) {
+		this.c = c;
 	}
 	
 	public String getNome() {
-		// TODO
-		return null;
+		return c.getNome();
 	}
 	
 }
