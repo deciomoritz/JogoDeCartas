@@ -6,10 +6,7 @@ public class FabricaConta {
 		// TODO
 	}
 	
-	public Conta criar(String login, String senha) {
-		// TODO
-		return null;
+	public static Conta criar(String login, String senha) {
+		return new Conta(login, senha);
 	}
-	
-
 }
