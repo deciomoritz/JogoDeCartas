@@ -1,5 +1,6 @@
 
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class ListaDeBaralhos {
@@ -7,17 +8,19 @@ public class ListaDeBaralhos {
 	private Set<Baralho> baralhos;
 	
 	public ListaDeBaralhos() {
-		// TODO
+		baralhos = new HashSet<Baralho>();
 	}
 	
 	public boolean existe(String nome) {
-		// TODO
+		for (Baralho baralho : baralhos) {
+			if(baralho.getNome() == nome)
+				return true;
+		}
 		return false;
 	}
 	
 	public boolean adicionar(Baralho b) {
-		// TODO
-		return false;
+		return baralhos.add(b);
 	}
 
 }
