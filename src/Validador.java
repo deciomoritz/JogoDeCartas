@@ -18,9 +18,13 @@ public class Validador {
 	
 	private boolean validarRepetidas(Baralho b) {
 		for(int i=0;b.compararTamanho(i)>0;i++){
-			
+			String nome = b.getCarta(i);
+			int repetidas = b.quantidadeDeExemplares(nome);
+			if(repetidas>Config.MAX_COPIAS){
+				return false;
+			}
 		}
-		return false;
+		return true;
 	}
 
 }
