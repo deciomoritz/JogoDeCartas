@@ -1,14 +1,11 @@
-
-
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
 
 public class ListaDeBaralhos {
 	
-	private Set<Baralho> baralhos;
+	private ArrayList<Baralho> baralhos;
 	
 	public ListaDeBaralhos() {
-		baralhos = new HashSet<Baralho>();
+		baralhos = new ArrayList<Baralho>();
 	}
 	
 	public boolean existe(String nome) {
@@ -21,6 +18,14 @@ public class ListaDeBaralhos {
 	
 	public boolean adicionar(Baralho b) {
 		return baralhos.add(b);
+	}
+	
+	public int quantidade(){
+		return baralhos.size();
+	}
+	
+	public Baralho getBaralho(int i){
+		return baralhos.get(i);
 	}
 
 }

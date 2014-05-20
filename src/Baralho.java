@@ -14,10 +14,14 @@ public class Baralho {
 		return listaDeExemplares.get(index).getNome();
 	}
 	
+	public ExemplarDeCarta getCopiaCarta(int index) {
+		return listaDeExemplares.get(index);
+	}
+	
 	public int compararTamanho(int valor) {
 		if(valor>quantidade)
 			return 1;
-		else if(valor<quantidade)
+		else if(valor<=quantidade)
 			return -1;
 		return 0;
 	}
@@ -43,6 +47,10 @@ public class Baralho {
 	
 	public String getNome() {
 		return nome;
+	}
+	
+	public int quantidade(){
+		return quantidade;
 	}
 
 }
