@@ -1,5 +1,3 @@
-
-
 import java.util.ArrayList;
 public class Baralho {
 	
@@ -9,6 +7,7 @@ public class Baralho {
 	
 	public Baralho(String nome) {
 		this.nome = nome;
+		listaDeExemplares = new ArrayList<ExemplarDeCarta>();
 	}
 	
 	public String getCarta(int index) {
