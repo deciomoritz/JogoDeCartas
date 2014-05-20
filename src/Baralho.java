@@ -21,7 +21,7 @@ public class Baralho {
 	public int compararTamanho(int valor) {
 		if(valor>quantidade)
 			return 1;
-		else if(valor<=quantidade)
+		else if(valor<quantidade)
 			return -1;
 		return 0;
 	}

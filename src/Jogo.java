@@ -1,7 +1,6 @@
 public class Jogo {
 
 	private GerenciadorDeContas g;
-	private Validador v;
 	private ListaDeBaralhos l;
 
 	private Baralho baralhoTemp;
@@ -16,7 +15,6 @@ public class Jogo {
 
 	public Jogo() {
 		g = new GerenciadorDeContas();
-		v = new Validador();
 		l = new ListaDeBaralhos();
 	}
 
@@ -44,9 +42,10 @@ public class Jogo {
 	}
 
 	public boolean salvar(Baralho b) {
-		if (!v.validar(baralhoTemp))
+		if (!Validador.validar(b))
 			return false;
-		return l.adicionar(baralhoTemp);
+		l.adicionar(b);
+		return true;
 	}
 
 	public void editarBaralho(Baralho b, Carta c, Decisao d) {
@@ -56,8 +55,6 @@ public class Jogo {
 			break;
 		case ADICIONAR:
 			this.adicionar(c, b);
-			break;
-		default:
 			break;
 		}
 	}

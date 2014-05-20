@@ -4,24 +4,22 @@ public class Validador {
 	public Validador() {
 	}
 	
-	public boolean validar(Baralho b) {
+	public static boolean validar(Baralho b) {
 		if(!validarQuantidade(b)){
-			System.out.println("oi");
 			return false;
 		}
 		return validarRepetidas(b);
 	}
 	
-	private boolean validarQuantidade(Baralho b) {
+	private static boolean validarQuantidade(Baralho b) {
 		if(b.compararTamanho(Config.MAX)<0){
-			System.out.println("ai");
 			return false;
 		}
 		return b.compararTamanho(Config.MIN) <= 0; 
 	}
 	
-	private boolean validarRepetidas(Baralho b) {
-		for(int i=0;b.compararTamanho(i)>0;i++){
+	private static boolean validarRepetidas(Baralho b) {
+		for(int i=0;i<b.quantidade();i++){
 			String nome = b.getCarta(i);
 			int repetidas = b.quantidadeDeExemplares(nome);
 			if(repetidas>Config.MAX_COPIAS){
