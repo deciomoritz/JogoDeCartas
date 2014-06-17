@@ -20,7 +20,7 @@ public class Validador {
 	
 	private static boolean validarRepetidas(Baralho b) {
 		for(int i=0;i<b.quantidade();i++){
-			String nome = b.getCarta(i);
+			String nome = b.getNomeCarta(i);
 			int repetidas = b.quantidadeDeExemplares(nome);
 			if(repetidas>Config.MAX_COPIAS){
 				return false;

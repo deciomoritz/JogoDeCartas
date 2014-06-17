@@ -10,8 +10,16 @@ public class Baralho {
 		listaDeExemplares = new ArrayList<ExemplarDeCarta>();
 	}
 	
-	public String getCarta(int index) {
+	public int getTamanho(){
+		return listaDeExemplares.size();
+	}
+	
+	public String getNomeCarta(int index) {
 		return listaDeExemplares.get(index).getNome();
+	}
+	
+	public ExemplarDeCarta getCarta(int index) {
+		return listaDeExemplares.get(index);
 	}
 	
 	public ExemplarDeCarta getCopiaCarta(int index) {
@@ -29,7 +37,7 @@ public class Baralho {
 	public int quantidadeDeExemplares(String nome) {
 		int val =0;
 		for(int i =0;i<quantidade;i++){
-			if(getCarta(i)==nome)
+			if(getNomeCarta(i)==nome)
 				val++;
 		}
 		return val;

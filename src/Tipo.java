@@ -14,5 +14,4 @@ public enum Tipo {
 	public int getValor() {
 		return this.valor;
 	}
-
 }

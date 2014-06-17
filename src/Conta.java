@@ -10,6 +10,10 @@ public class Conta {
 	
 	public Conta(){
 	}
+	
+	public String getLogin(){
+		return login;
+	}
 
 	@Override
 	public int hashCode() {

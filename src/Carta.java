@@ -1,4 +1,4 @@
-public class Carta {
+public abstract class Carta {
 	
 	private String nome;
 	private String descricao;
@@ -70,5 +70,4 @@ public class Carta {
 		return true;
 	}
 
-	
 }
