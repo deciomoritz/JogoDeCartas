@@ -7,6 +7,11 @@ public class Jogo {
 
 	private Baralho baralhoTemp;
 	
+	public void efetuarJogada(Interagível afetado, ExemplarDeCarta exemplar, Jogador executor){
+		Jogada j = FabricaJogada.criarJogada(afetado, exemplar, executor);
+		partida.efetuar(j);
+	}
+	
 	public void iniciarPartida(){
 		partida.iniciar();
 	}
@@ -50,7 +55,7 @@ public class Jogo {
 		new Jogo();
 	}
 
-	public void remover(Carta c, Baralho b) {
+	public void remover(CartaAbstrata c, Baralho b) {
 		ExemplarDeCarta e = c.getExemplar();
 		b.remover(e);
 	}
@@ -61,7 +66,7 @@ public class Jogo {
 		return g.adicionar(j);
 	}
 
-	public void adicionar(Carta c, Baralho b) {
+	public void adicionar(CartaAbstrata c, Baralho b) {
 		ExemplarDeCarta e = c.getExemplar();
 		b.adicionar(e);
 	}
@@ -77,7 +82,7 @@ public class Jogo {
 		return true;
 	}
 
-	public void editarBaralho(Baralho b, Carta c, Decisao d) {
+	public void editarBaralho(Baralho b, CartaAbstrata c, Decisao d) {
 		switch (d) {
 		case REMOVER:
 			this.remover(c, b);
@@ -88,7 +93,7 @@ public class Jogo {
 		}
 	}
 
-	public void editarBaralho(Carta c, Decisao d) {
+	public void editarBaralho(CartaAbstrata c, Decisao d) {
 		editarBaralho(baralhoTemp, c, d);
 	}
 

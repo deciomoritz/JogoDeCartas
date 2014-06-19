@@ -1,8 +1,8 @@
-public class ExemplarDeCarta {
+public class ExemplarDeCarta implements Interagível{
 	
-	private Carta c;
+	private CartaAbstrata c;
 	
-	public ExemplarDeCarta(Carta c) {
+	public ExemplarDeCarta(CartaAbstrata c) {
 		this.c = c;
 	}
 	
@@ -11,15 +11,20 @@ public class ExemplarDeCarta {
 	}
 	
 	public String getTipo(){
-		return c.getT();
+		return c.getTipo().toString();
 	}
 	
 	public String getDescricao(){
 		return c.getDescricao();
 	}
 	
-	public Carta getCarta(){
+	public CartaAbstrata getCarta(){
 		return c;
+	}
+	
+	@Override
+	public void interagir(Interagível a) {
+		c.interagir(a);
 	}
 
 	@Override
@@ -46,5 +51,4 @@ public class ExemplarDeCarta {
 			return false;
 		return true;
 	}
-	
 }

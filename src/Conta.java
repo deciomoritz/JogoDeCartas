@@ -8,6 +8,11 @@ public class Conta {
 		this.senha = senha;
 	}
 	
+	@Override
+	public String toString() {
+		return "Conta [login=" + login + "]";
+	}
+
 	public Conta(){
 	}
 	

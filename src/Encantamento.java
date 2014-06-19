@@ -1,21 +1,15 @@
-public class Encantamento extends Carta{
+public class Encantamento extends CartaAbstrata{
 
-	private Pontos bAtaque;
-	private Pontos bDefesa;
+	private Pontos bônus;
 	
-	public int qBonusAtaque(){
-		return bAtaque.getQuantidade();
+	public Encantamento(Integer bônus) {
+		super();
+		this.bônus = new Pontos(bônus);
 	}
-	
-	public int qBonusDefesa(){
-		return bDefesa.getQuantidade();
+
+	@Override
+	public void interagir(Interagível a) {
+		a.interagir(bônus);
 	}
-	
-	public Pontos bonusAtaque(){
-		return bAtaque;
-	}
-	
-	public Pontos bonusDefesa(){
-		return bDefesa;
-	}
+
 }

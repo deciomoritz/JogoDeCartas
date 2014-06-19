@@ -1,12 +1,31 @@
-public class Turno {
+import java.util.Random;
 
-	private Jogador j;
+public class Turno {
 	
-	public Jogador getJ() {
+	private Jogador j;
+
+	public Turno() {
+	}
+
+	public Turno(Jogador j) {
+		this.j = j;
+	}
+	
+	public Jogador jogador(){
 		return j;
 	}
 
-	public void setJogador(Jogador j) {
-		this.j = j;
+	public static Jogador decideInicio(Jogador usuario, Jogador oponente) {
+		Random r = new Random();
+		if (r.nextBoolean())
+			return usuario;
+		return oponente;
+	}
+	
+	public Jogador passarVez(Jogador usuario, Jogador oponente){
+		if(j == usuario)
+			j = oponente;
+		j = usuario;
+		return j;
 	}
 }

@@ -1,19 +1,27 @@
-public class Pontos {
+public class Pontos implements Interagível{
 	
 	private int quantidade;
 
-	public Pontos(int quantidade) throws Exception{
-		if(quantidade < 0)
-			throw new Exception("Não pode existir uma quantidade de pontos negativa");
+	public Pontos(int quantidade){
 		this.quantidade = quantidade;
-		
 	}
 
 	public int getQuantidade() {
 		return quantidade;
 	}
 	
-	public void soma(Pontos p){
+	public Pontos negativo(){
+		return new Pontos(-quantidade);
+	}
+	
+	@Override
+	public String toString() {
+		return "Pontos [quantidade=" + quantidade + "]";
+	}
+
+	@Override
+	public void interagir(Interagível a) {
+		Pontos p = (Pontos) a;
 		quantidade += p.getQuantidade();
 	}
 }

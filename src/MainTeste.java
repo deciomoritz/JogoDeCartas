@@ -1,6 +1,6 @@
 public class MainTeste {
 	
-	public MainTeste() throws Exception{
+	public MainTeste(){
 		Jogo j = new Jogo();
 		
 		j.criarConta("t1", "fuck");
@@ -73,9 +73,29 @@ public class MainTeste {
 		for (int i = 0; i < bO.getTamanho(); i++) {
 			System.out.println(bO.getNomeCarta(i));
 		}
+		
+		//Uma jogada
+		ExemplarDeCarta e = oponente.getMao().getExemplar(0);
+		System.out.println(usuario.toString());
+		System.out.println(oponente.toString());
+		System.out.println(e.getNome());
+		j.efetuarJogada(usuario, e, oponente);
+		System.out.println(usuario.toString());
+		System.out.println(oponente.toString());
+		
+		System.out.println();
+		
+		//Outra jogada
+		e = oponente.getMao().getExemplar(1);
+		System.out.println(usuario.toString());
+		System.out.println(oponente.toString());
+		System.out.println(e.getNome());
+		j.efetuarJogada(oponente, e, usuario);
+		System.out.println(usuario.toString());
+		System.out.println(oponente.toString());
 	}
 	
-	public static void main(String[] args) throws Exception{
+	public static void main(String[] args){
 		new MainTeste();
 	}
 }

@@ -13,25 +13,18 @@ public class Partida {
 	public void iniciar() {
 		distribuiCartas();
 
-		tAtual = new Turno();
-
-		tAtual.setJogador(decideInicio());
+		tAtual = new Turno(Turno.decideInicio(usuario, oponente));
+		
+		System.out.println("Jogador da vez: " + tAtual.jogador().getLogin());
 	}
 
-	public void efetuar(Jogada j) {
-
-	}
-
-	public Jogador usuarioTurno() {
-		if (tAtual.getJ() == usuario)
-			return usuario;
-		return oponente;
-	}
-
-	public Jogador oponenteTurno() {
-		if (tAtual.getJ() == usuario)
-			return oponente;
-		return usuario;
+	public boolean efetuar(Jogada j) {
+		if (j.executor() == tAtual.jogador()) {
+			j.executar();
+			tAtual.passarVez(usuario, oponente);
+			return true;
+		}
+		return false;
 	}
 
 	public void distribuiCartas() {
@@ -46,20 +39,13 @@ public class Partida {
 			ExemplarDeCarta e1 = bUsuario.getCarta(r.nextInt(bUsuario.getTamanho()));
 			mUsuario.adicionar(e1);
 			bUsuario.remover(e1);
-			
+
 			ExemplarDeCarta e2 = bOponente.getCarta(r.nextInt(bOponente.getTamanho()));
 			mOponente.adicionar(e2);
 			bOponente.remover(e2);
 		}
 		usuario.receber(mUsuario);
 		oponente.receber(mOponente);
-	}
-
-	public Jogador decideInicio() {
-		Random r = new Random();
-		if (r.nextBoolean())
-			return usuario;
-		return oponente;
 	}
 
 	public Partida(Jogador usuario, String nome) {

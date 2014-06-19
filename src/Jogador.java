@@ -1,5 +1,10 @@
-public class Jogador {
+public class Jogador implements Interagível{
 	
+	@Override
+	public String toString() {
+		return "Jogador [ip=" + ip + ", conta=" + conta + ", vida=" + vida + ", baralho=" + baralho + ", mao=" + mao + "]";
+	}
+
 	private String ip;
 	private Conta conta;
 	private Pontos vida;
@@ -7,8 +12,13 @@ public class Jogador {
 	private Baralho baralho;
 	private Mao mao;
 	
-	public Jogador(String ip, Conta conta) throws Exception {
+	public Jogador(String ip, Conta conta){
 		this.ip = ip;
+		this.conta = conta;
+		this.vida = new Pontos(Config.PONTOS_VIDA);
+	}
+	
+	public Jogador(Conta conta){
 		this.conta = conta;
 		this.vida = new Pontos(Config.PONTOS_VIDA);
 	}
@@ -19,10 +29,6 @@ public class Jogador {
 	
 	public Mao getMao(){
 		return mao;
-	}
-
-	public Jogador(Conta conta) {
-		this.conta = conta;
 	}
 	
 	public String getLogin(){
@@ -63,5 +69,10 @@ public class Jogador {
 		} else if (!conta.equals(other.conta))
 			return false;
 		return true;
+	}
+
+	@Override
+	public void interagir(Interagível a) {
+		vida.interagir(a);
 	}
 }

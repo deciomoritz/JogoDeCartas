@@ -1,19 +1,19 @@
-public abstract class Carta {
+public abstract class CartaAbstrata implements Interagível{
 	
 	private String nome;
 	private String descricao;
 	private Tipo t;
 	
-	public Carta(){
+	public CartaAbstrata(){
 	}
 	
-	public Carta(String nome, String descricao, Tipo t) {
+	public CartaAbstrata(String nome, String descricao, Tipo t) {
 		this.nome = nome;
 		this.descricao = descricao;
 		this.t = t;
 	}
 	
-	public Carta(Carta c){
+	public CartaAbstrata(CartaAbstrata c){
 		this.nome = c.nome;
 		this.descricao = c.descricao;
 		this.t = c.t;
@@ -27,8 +27,8 @@ public abstract class Carta {
 		return descricao;
 	}
 
-	public String getT() {
-		return t.toString();
+	public Tipo getTipo() {
+		return t;
 	}
 
 	public ExemplarDeCarta getExemplar() {
@@ -54,7 +54,7 @@ public abstract class Carta {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Carta other = (Carta) obj;
+		CartaAbstrata other = (CartaAbstrata) obj;
 		if (descricao == null) {
 			if (other.descricao != null)
 				return false;
@@ -69,5 +69,4 @@ public abstract class Carta {
 			return false;
 		return true;
 	}
-
 }
