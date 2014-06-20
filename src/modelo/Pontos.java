@@ -1,6 +1,14 @@
+package modelo;
+
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class Pontos implements Interagível{
 	
 	private int quantidade;
+	
+	public Pontos() {
+	}
 
 	public Pontos(int quantidade){
 		this.quantidade = quantidade;

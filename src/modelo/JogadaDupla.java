@@ -1,3 +1,4 @@
+package modelo;
 public class JogadaDupla extends JogadaSimples{
 
 	public JogadaDupla(Interagível afetado, ExemplarDeCarta exemplar, Jogador executor) {

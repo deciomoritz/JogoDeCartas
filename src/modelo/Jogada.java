@@ -1,3 +1,4 @@
+package modelo;
 public interface Jogada {
 
 	public void executar();

@@ -1,3 +1,4 @@
+package modelo;
 public class JogadaSimples implements Jogada{
 
 	private Jogador executor;

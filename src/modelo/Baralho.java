@@ -1,9 +1,31 @@
+package modelo;
 import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+
+@Entity
 public class Baralho {
 	
+	@Id
+	@GeneratedValue
+	private int id;
+	
 	private int quantidade;
-	private ArrayList<ExemplarDeCarta> listaDeExemplares;
+	
+    @OneToMany(fetch = FetchType.EAGER, targetEntity = ExemplarDeCarta.class)
+    @JoinColumn(name = "baralho_id")   
+	private List<ExemplarDeCarta> listaDeExemplares;
 	private String nome;
+	
+	public Baralho(){
+		
+	}
 	
 	public Baralho(String nome) {
 		this.nome = nome;
@@ -18,11 +40,7 @@ public class Baralho {
 		return listaDeExemplares.get(index).getNome();
 	}
 	
-	public ExemplarDeCarta getCarta(int index) {
-		return listaDeExemplares.get(index);
-	}
-	
-	public ExemplarDeCarta getCopiaCarta(int index) {
+	public ExemplarDeCarta getExemplar(int index) {
 		return listaDeExemplares.get(index);
 	}
 	

@@ -1,3 +1,4 @@
+package modelo;
 import java.util.Random;
 
 public class Partida {
@@ -36,11 +37,11 @@ public class Partida {
 		Random r = new Random();
 
 		for (int i = 0; i < Config.QTDE_INICIAL_MAO; i++) {
-			ExemplarDeCarta e1 = bUsuario.getCarta(r.nextInt(bUsuario.getTamanho()));
+			ExemplarDeCarta e1 = bUsuario.getExemplar(r.nextInt(bUsuario.getTamanho()));
 			mUsuario.adicionar(e1);
 			bUsuario.remover(e1);
 
-			ExemplarDeCarta e2 = bOponente.getCarta(r.nextInt(bOponente.getTamanho()));
+			ExemplarDeCarta e2 = bOponente.getExemplar(r.nextInt(bOponente.getTamanho()));
 			mOponente.adicionar(e2);
 			bOponente.remover(e2);
 		}

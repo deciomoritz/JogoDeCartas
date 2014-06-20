@@ -1,9 +1,26 @@
+package modelo;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+@Entity
 public class ExemplarDeCarta implements Interagível{
 	
+	@Id
+	@GeneratedValue
+	private int id;
+	
+	@OneToOne
 	private CartaAbstrata c;
 	
 	public ExemplarDeCarta(CartaAbstrata c) {
 		this.c = c;
+	}
+	
+	public ExemplarDeCarta(){
+		
 	}
 	
 	public String getNome() {

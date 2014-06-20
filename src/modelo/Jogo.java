@@ -1,6 +1,11 @@
+package modelo;
+
+import persistencia.GerenciadorDeContas;
+import persistencia.ListaDeBaralhos;
+
 public class Jogo {
 
-	private GerenciadorDeJogadores g;
+	private GerenciadorDeContas g;
 	private ListaDeBaralhos l;
 	
 	private Partida partida;
@@ -47,7 +52,7 @@ public class Jogo {
 	}
 
 	public Jogo() {
-		g = new GerenciadorDeJogadores();
+		g = new GerenciadorDeContas();
 		l = new ListaDeBaralhos();
 	}
 
@@ -62,8 +67,7 @@ public class Jogo {
 
 	public boolean criarConta(String login, String senha) {
 		Conta c = new Conta(login, senha);
-		Jogador j = new Jogador(c);
-		return g.adicionar(j);
+		return g.adicionar(c);
 	}
 
 	public void adicionar(CartaAbstrata c, Baralho b) {
@@ -106,7 +110,7 @@ public class Jogo {
 	}
 
 	public boolean logar(Jogador j) {
-		if(g.existe(j)){
+		if(g.existe(j.getConta())){
 			return true;
 		}
 		return false;

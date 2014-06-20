@@ -1,3 +1,4 @@
+package modelo;
 public class FabricaJogada {
 
 	public static Jogada criarJogada(Interagível afetado, ExemplarDeCarta exemplar, Jogador executor){

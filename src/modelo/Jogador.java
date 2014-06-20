@@ -1,3 +1,4 @@
+package modelo;
 public class Jogador implements Interagível{
 	
 	@Override
@@ -46,6 +47,8 @@ public class Jogador implements Interagível{
 	public Jogador() {
 	}
 
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -69,6 +72,10 @@ public class Jogador implements Interagível{
 		} else if (!conta.equals(other.conta))
 			return false;
 		return true;
+	}
+
+	public Conta getConta() {
+		return conta;
 	}
 
 	@Override
