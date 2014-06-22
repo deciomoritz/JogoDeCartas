@@ -24,7 +24,6 @@ public class Baralho {
 	private String nome;
 	
 	public Baralho(){
-		
 	}
 	
 	public Baralho(String nome) {

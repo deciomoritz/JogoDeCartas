@@ -3,7 +3,7 @@ import java.util.Random;
 
 public class Partida {
 
-	private Jogador usuario;
+	private Jogador jogador;
 	private Jogador oponente;
 	private String nome;
 
@@ -12,45 +12,37 @@ public class Partida {
 	private boolean oponenteConectado;
 
 	public void iniciar() {
-		distribuiCartas();
+		distribuiCartas(jogador);
+		distribuiCartas(oponente);
 
-		tAtual = new Turno(Turno.decideInicio(usuario, oponente));
-		
-		System.out.println("Jogador da vez: " + tAtual.jogador().getLogin());
+		tAtual = new Turno(jogador, oponente);
 	}
 
 	public boolean efetuar(Jogada j) {
 		if (j.executor() == tAtual.jogador()) {
 			j.executar();
-			tAtual.passarVez(usuario, oponente);
+			tAtual.passarVez(jogador, oponente);
 			return true;
 		}
 		return false;
 	}
 
-	public void distribuiCartas() {
-		Mao mUsuario = new Mao();
-		Mao mOponente = new Mao();
+	public void distribuiCartas(Jogador j) {
+		Mao m = new Mao();
 
-		Baralho bUsuario = usuario.getBaralho();
-		Baralho bOponente = oponente.getBaralho();
+		Baralho b = j.getBaralho();
 		Random r = new Random();
 
 		for (int i = 0; i < Config.QTDE_INICIAL_MAO; i++) {
-			ExemplarDeCarta e1 = bUsuario.getExemplar(r.nextInt(bUsuario.getTamanho()));
-			mUsuario.adicionar(e1);
-			bUsuario.remover(e1);
-
-			ExemplarDeCarta e2 = bOponente.getExemplar(r.nextInt(bOponente.getTamanho()));
-			mOponente.adicionar(e2);
-			bOponente.remover(e2);
+			ExemplarDeCarta e1 = b.getExemplar(r.nextInt(b.getTamanho()));
+			m.adicionar(e1);
+			b.remover(e1);
 		}
-		usuario.receber(mUsuario);
-		oponente.receber(mOponente);
+		j.receber(m);
 	}
 
 	public Partida(Jogador usuario, String nome) {
-		this.usuario = usuario;
+		this.jogador = usuario;
 		this.nome = nome;
 		oponenteConectado = false;
 	}
@@ -68,7 +60,7 @@ public class Partida {
 	}
 
 	public Jogador usuario() {
-		return usuario;
+		return jogador;
 	}
 
 	public Jogador login() {

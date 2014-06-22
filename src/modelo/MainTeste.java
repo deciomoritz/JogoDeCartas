@@ -35,8 +35,7 @@ public class MainTeste {
 		System.out.println("Criou: " + criou);
 		System.out.println("Conectou: " + conectou);
 
-		Acervo a = null;
-
+		Acervo a = new Acervo();
 		Baralho bU = new Baralho("us");
 		bU.adicionar(a.getCarta(0));
 		bU.adicionar(a.getCarta(1));
@@ -108,7 +107,7 @@ public class MainTeste {
 	}
 
 	public static void main(String[] args) {
-		// new MainTeste();
+		 new MainTeste();
 		
 		/*Acervo a = new Acervo();
 		
@@ -116,9 +115,9 @@ public class MainTeste {
 			System.out.println(a.getCarta(i).getNome());
 		}*/
 		
-		ListaDeBaralhos l = new ListaDeBaralhos();
+		//ListaDeBaralhos l = new ListaDeBaralhos();
 		
-		Baralho b = new Baralho("agora vai essa porra");
+		//Baralho b = new Baralho("agora vai essa porra");
 		
 		/*ExemplarDeCarta e1 = new ExemplarDeCarta(new Monstro("decio", "asdasd", Tipo.MONSTRO, 2));
 		ExemplarDeCarta e2 = new ExemplarDeCarta(new Monstro("lajsldkj", "asdasd", Tipo.MONSTRO, 2));
@@ -130,11 +129,11 @@ public class MainTeste {
 		
 		//l.adicionar(b);
 		
-		for (int i = 0; i < l.quantidade(); i++) {
+/*		for (int i = 0; i < l.quantidade(); i++) {
 			System.out.println("Baralho: " + l.getBaralho(i).getNome());
 			for (int j = 0; j < l.getBaralho(i).getTamanho(); j++) {		
 				System.out.println(l.getBaralho(i).getExemplar(j).getNome());
 			}
-		}
+		}*/
 	}
 }

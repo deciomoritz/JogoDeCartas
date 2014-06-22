@@ -8,15 +8,15 @@ public class Turno {
 	public Turno() {
 	}
 
-	public Turno(Jogador j) {
-		this.j = j;
+	public Turno(Jogador jogador, Jogador oponente) {
+		this.j = decideInicio(jogador, oponente);
 	}
 	
 	public Jogador jogador(){
 		return j;
 	}
 
-	public static Jogador decideInicio(Jogador usuario, Jogador oponente) {
+	private static Jogador decideInicio(Jogador usuario, Jogador oponente) {
 		Random r = new Random();
 		if (r.nextBoolean())
 			return usuario;
