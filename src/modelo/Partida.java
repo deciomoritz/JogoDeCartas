@@ -19,9 +19,9 @@ public class Partida {
 		tAtual = new Turno(jogador, oponente);
 	}
 
-	public boolean efetuar(Jogada j) {
-		if (j.executor() == tAtual.jogador()) {
-			j.executar();
+	public boolean efetuar(Jogada jogada) {
+		if (jogada.executor() == tAtual.jogador()) {
+			jogada.executar();
 			if (!terminada()) {
 				tAtual.passarVez(jogador, oponente);
 				tAtual.jogador().comprarCarta();
