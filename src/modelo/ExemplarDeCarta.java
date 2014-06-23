@@ -27,8 +27,8 @@ public class ExemplarDeCarta implements Interagível{
 		return c.getNome();
 	}
 	
-	public String getTipo(){
-		return c.getTipo().toString();
+	public Tipo tipo(){
+		return c.getTipo();
 	}
 	
 	public String getDescricao(){
