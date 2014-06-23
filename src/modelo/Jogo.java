@@ -7,56 +7,58 @@ public class Jogo {
 
 	private GerenciadorDeContas g;
 	private ListaDeBaralhos l;
-	
+
 	private Partida partida;
 
 	private Baralho baralhoTemp;
-	
-	public void efetuarJogada(Interagível afetado, ExemplarDeCarta exemplar, Jogador executor){
-		Jogada j = FabricaJogada.criarJogada(afetado, exemplar, executor);
-		if(!partida.terminada())
-			partida.efetuar(j);
+
+	public boolean efetuarJogada(Interagível afetado, ExemplarDeCarta exemplar, Jogador executor) {
+		if (!partida.terminada()) {
+			Jogada j = FabricaJogada.criarJogada(afetado, exemplar, executor);
+			return partida.efetuar(j);
+		}
+		return false;
 	}
-	
-	public boolean partidaTerminada(){
+
+	public boolean partidaTerminada() {
 		return partida.terminada();
 	}
-	
-	public Jogador vencedor(){
+
+	public Jogador vencedor() {
 		return partida.vencedor();
 	}
-	
-	public void iniciarPartida(){
+
+	public void iniciarPartida() {
 		partida.iniciar();
 	}
-	
-	public String nomeDaPartida(){
+
+	public String nomeDaPartida() {
 		return partida.getNome();
 	}
-	
-	public void escolherBaralho(Baralho b, Jogador j){
+
+	public void escolherBaralho(Baralho b, Jogador j) {
 		j.escolher(b);
 	}
-	
-	public boolean criarPartida(String nome, Jogador j){
-		if(logar(j)){
+
+	public boolean criarPartida(String nome, Jogador j) {
+		if (logar(j)) {
 			partida = new Partida(j, nome);
 			return true;
 		}
 		return false;
 	}
-	
-	public boolean conectarAPartida(Jogador oponente){
-		if(logar(oponente))
+
+	public boolean conectarAPartida(Jogador oponente) {
+		if (logar(oponente))
 			return partida.conectar(oponente);
 		return false;
 	}
-	
-	public Baralho getBaralhoTemp(){
+
+	public Baralho getBaralhoTemp() {
 		return baralhoTemp;
 	}
-	
-	public ListaDeBaralhos getListaDeBaralhos(){
+
+	public ListaDeBaralhos getListaDeBaralhos() {
 		return l;
 	}
 
@@ -115,12 +117,12 @@ public class Jogo {
 	}
 
 	public boolean logar(Jogador j) {
-		if(g.existe(j.getConta())){
+		if (g.existe(j.getConta())) {
 			return true;
 		}
 		return false;
 	}
-	
+
 	public boolean logar(String login, String senha) {
 		Conta c = new Conta(login, senha);
 		Jogador j = new Jogador(c);
