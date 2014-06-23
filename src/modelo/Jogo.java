@@ -14,7 +14,8 @@ public class Jogo {
 	
 	public void efetuarJogada(Interagível afetado, ExemplarDeCarta exemplar, Jogador executor){
 		Jogada j = FabricaJogada.criarJogada(afetado, exemplar, executor);
-		partida.efetuar(j);
+		if(!partida.terminada())
+			partida.efetuar(j);
 	}
 	
 	public boolean partidaTerminada(){
