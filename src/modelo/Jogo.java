@@ -17,6 +17,14 @@ public class Jogo {
 		partida.efetuar(j);
 	}
 	
+	public boolean partidaTerminada(){
+		return partida.terminada();
+	}
+	
+	public Jogador vencedor(){
+		return partida.vencedor();
+	}
+	
 	public void iniciarPartida(){
 		partida.iniciar();
 	}

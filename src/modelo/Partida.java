@@ -1,4 +1,5 @@
 package modelo;
+
 import java.util.Random;
 
 public class Partida {
@@ -21,21 +22,35 @@ public class Partida {
 	public boolean efetuar(Jogada j) {
 		if (j.executor() == tAtual.jogador()) {
 			j.executar();
-			tAtual.passarVez(jogador, oponente);
-			tAtual.jogador().comprarCarta();
-			return true;
+			if (!terminada()) {
+				tAtual.passarVez(jogador, oponente);
+				tAtual.jogador().comprarCarta();
+				return true;
+			}
 		}
 		return false;
+	}
+
+	public boolean terminada() {
+		return !usuario().vivo() || !oponente.vivo();
+	}
+
+	public Jogador vencedor() {
+		if (terminada()) {
+			if (jogador.vivo())
+				return jogador;
+			return oponente;
+		}
+		return null;
 	}
 
 	public void distribuiCartas(Jogador j) {
 		Mao m = new Mao();
 
 		Baralho b = j.getBaralho();
-		Random r = new Random();
 
 		for (int i = 0; i < Config.QTDE_INICIAL_MAO; i++) {
-			ExemplarDeCarta e1 = b.getExemplar(r.nextInt(b.getTamanho()));
+			ExemplarDeCarta e1 = b.comprar();
 			m.adicionar(e1);
 			b.remover(e1);
 		}
@@ -47,7 +62,7 @@ public class Partida {
 		this.nome = nome;
 		oponenteConectado = false;
 	}
-	
+
 	public boolean conectar(Jogador oponente) {
 		if (!oponenteConectado) {
 			this.oponente = oponente;

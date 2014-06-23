@@ -35,6 +35,10 @@ public class Jogador implements Interagível{
 		return mao;
 	}
 	
+	public boolean vivo(){
+		return vida.getQuantidade() > 0;
+	}
+	
 	public void comprarCarta(){
 		ExemplarDeCarta e = baralho.comprar();
 		mao.adicionar(e);
