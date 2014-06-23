@@ -9,18 +9,20 @@ public class Turno {
 	}
 
 	public Turno(Jogador jogador, Jogador oponente) {
-		this.j = decideInicio(jogador, oponente);
+		decideInicio(jogador, oponente);
 	}
 	
 	public Jogador jogador(){
 		return j;
 	}
 
-	private static Jogador decideInicio(Jogador usuario, Jogador oponente) {
+	private void decideInicio(Jogador usuario, Jogador oponente) {
 		Random r = new Random();
-		if (r.nextBoolean())
-			return usuario;
-		return oponente;
+		if (r.nextBoolean()){
+			j = usuario;
+			return;
+		}
+		j = oponente;
 	}
 	
 	public Jogador passarVez(Jogador usuario, Jogador oponente){
