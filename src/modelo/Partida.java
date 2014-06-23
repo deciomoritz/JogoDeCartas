@@ -17,6 +17,8 @@ public class Partida {
 		distribuiCartas(oponente);
 
 		tAtual = new Turno(jogador, oponente);
+		
+		preTurno(tAtual.jogador());
 	}
 
 	public boolean efetuar(Jogada jogada) {
@@ -24,11 +26,15 @@ public class Partida {
 			jogada.executar();
 			if (!terminada()) {
 				tAtual.passarVez(jogador, oponente);
-				tAtual.jogador().comprarCarta();
+				preTurno(tAtual.jogador());
 				return true;
 			}
 		}
 		return false;
+	}
+
+	private void preTurno(Jogador j) {
+		j.comprarCarta();
 	}
 
 	public boolean terminada() {

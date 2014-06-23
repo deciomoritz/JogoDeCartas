@@ -51,6 +51,10 @@ public class Acervo {
 		em.close();
 	}
 	
+	public List<ExemplarDeCarta> filtrar(Filtro f, String campo){
+		return f.filtrar(campo);
+	}
+	
 	public ExemplarDeCarta getCarta(int i){
 		return new ExemplarDeCarta(listaDeCartas.get(i));
 	}
