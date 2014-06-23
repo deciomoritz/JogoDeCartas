@@ -8,6 +8,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import persistencia.Acervo;
+import persistencia.Filtro;
 import persistencia.GerenciadorDeContas;
 import persistencia.ListaDeBaralhos;
 
@@ -107,13 +108,15 @@ public class MainTeste {
 	}
 
 	public static void main(String[] args) {
-		 new MainTeste();
+		 //new MainTeste();
 		
-		/*Acervo a = new Acervo();
+		Acervo a = new Acervo();
 		
-		for (int i = 0; i < a.quantidade(); i++) {
-			System.out.println(a.getCarta(i).getNome());
-		}*/
+		List<CartaAbstrata> teste = a.filtrar(Filtro.Nome, "Katherine");
+		
+		for (int i = 0; i < teste.size(); i++) {
+			System.out.println(teste.get(i).getNome());
+		}
 		
 		//ListaDeBaralhos l = new ListaDeBaralhos();
 		
