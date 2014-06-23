@@ -45,13 +45,10 @@ public class Partida {
 	}
 
 	public void distribuiCartas(Jogador j) {
-		Mao m = new Mao();
-
 		Baralho b = j.getBaralho();
 
 		for (int i = 0; i < Config.QTDE_INICIAL_MAO; i++) {
 			ExemplarDeCarta e1 = b.comprar();
-			m.adicionar(e1);
 			b.remover(e1);
 			j.receber(e1);
 		}
