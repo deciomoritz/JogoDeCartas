@@ -27,8 +27,8 @@ public class Jogador implements Interagível{
 		this.vida = new Pontos(Config.PONTOS_VIDA);
 	}
 	
-	public void receber(Mao m){
-		mao = m;
+	public void receber(ExemplarDeCarta e){
+		mao.adicionar(e);
 	}
 	
 	public Mao getMao(){

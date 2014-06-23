@@ -53,8 +53,8 @@ public class Partida {
 			ExemplarDeCarta e1 = b.comprar();
 			m.adicionar(e1);
 			b.remover(e1);
+			j.receber(e1);
 		}
-		j.receber(m);
 	}
 
 	public Partida(Jogador usuario, String nome) {
