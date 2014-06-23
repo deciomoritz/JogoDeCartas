@@ -1,4 +1,5 @@
 package persistencia;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,83 +12,63 @@ import modelo.Baralho;
 import modelo.Config;
 
 public class ListaDeBaralhos {
-	
+
 	private List<Baralho> baralhos;
-	
+
 	EntityManagerFactory factory;
 	EntityManager em;
-	
+
 	public ListaDeBaralhos() {
 		baralhos = new ArrayList<Baralho>();
-		
+
 		trazerDoBanco();
 	}
-	
+
 	public boolean existe(String nome) {
 		for (Baralho baralho : baralhos) {
-			if(baralho.getNome() == nome)
+			if (baralho.getNome() == nome)
 				return true;
 		}
 		return false;
 	}
-	
+
 	public boolean adicionar(Baralho b) {
-		if(baralhos.add(b)){
+		if (baralhos.add(b)) {
 			EntityManagerFactory factory = Persistence.createEntityManagerFactory(Config.NOME_ENTITY_MANAGER);
 			EntityManager em = factory.createEntityManager();
 
 			em.getTransaction().begin();
-			
+
 			for (int i = 0; i < b.getTamanho(); i++) {
 				em.persist(b.getExemplar(i));
 				em.persist(b.getExemplar(i).getCarta());
 			}
 			em.persist(b);
-			
+
 			em.getTransaction().commit();
 			em.close();
 		}
 		return false;
 	}
-	
-	public int quantidade(){
+
+	public int quantidade() {
 		return baralhos.size();
 	}
-	
-	public Baralho getBaralho(int i){
+
+	public Baralho getBaralho(int i) {
 		return baralhos.get(i);
 	}
-	
+
 	@SuppressWarnings("unchecked")
-	private void trazerDoBanco(){
+	private void trazerDoBanco() {
 		factory = Persistence.createEntityManagerFactory(Config.NOME_ENTITY_MANAGER);
 		em = factory.createEntityManager();
 		em.getTransaction().begin();
-		
+
 		List<Baralho> aux = em.createQuery("select b from Baralho b").getResultList();
-		
-		/*List<Baralho> aux2;
-		
-		for (int i = 0; i < aux.size(); i++) {
-			Query consulta = em.createQuery("select b from Exemplardecarta e, Encantamento en,Baralho b where +"
-					+ " b.id = e.baralho_id	and e.c_id = en.id +"
-					+ " and baralho_id = " + i );
-			
-			aux2 = consulta.getResultList();
-			
-			baralhos.addAll(aux2);
-			
-			consulta = em.createQuery("select b from Exemplardecarta e, Monstro m,Baralho b where +"
-					+ " b.id = e.baralho_id	and e.c_id = m.id +"
-					+ " and baralho_id = " + i );
-			
-			aux2 = consulta.getResultList();
-			*/
-			baralhos.addAll(aux);
-		
-		
-		//baralhos = consulta.getResultList();
-		
+
+		baralhos.addAll(aux);
+
 		em.getTransaction().commit();
 		em.close();
 	}

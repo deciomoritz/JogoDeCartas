@@ -1,5 +1,7 @@
 package modelo;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -49,6 +51,14 @@ public class Baralho {
 		else if(valor<quantidade)
 			return -1;
 		return 0;
+	}
+	
+	public ExemplarDeCarta comprar(){
+		return listaDeExemplares.remove(0);
+	}
+	
+	public void embaralhar(){
+		Collections.shuffle(listaDeExemplares);
 	}
 	
 	public int quantidadeDeExemplares(String nome) {

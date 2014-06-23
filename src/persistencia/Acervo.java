@@ -43,8 +43,8 @@ public class Acervo {
 		Query consulta = em.createQuery("select m from Monstro m");
 		
 		listaDeCartas = consulta.getResultList();
-		consulta = em.createQuery("select e from Encantamento e");
-		List<CartaAbstrata> aux = consulta.getResultList();
+		Query consulta2 = em.createQuery("select e from Encantamento e");
+		List<CartaAbstrata> aux = consulta2.getResultList();
 		listaDeCartas.addAll(aux);
 		
 		em.getTransaction().commit();

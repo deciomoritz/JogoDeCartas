@@ -56,10 +56,6 @@ public class Jogo {
 		l = new ListaDeBaralhos();
 	}
 
-	public void init() {
-		new Jogo();
-	}
-
 	public void remover(CartaAbstrata c, Baralho b) {
 		ExemplarDeCarta e = c.getExemplar();
 		b.remover(e);

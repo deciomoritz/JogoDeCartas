@@ -34,6 +34,7 @@ public class GerenciadorDeContas {
 	}
 	
 	public boolean adicionar(Conta conta) {
+		trazerDoBanco();
 		for (Conta c : contas) {
 			if(c.getLogin() == conta.getLogin())
 				return false;

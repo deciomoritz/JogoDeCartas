@@ -13,7 +13,6 @@ public class Encantamento extends CartaAbstrata{
 	
 	public Encantamento(String nome, String descricao, Tipo t, Integer bonus) {
 		super(nome, descricao, t);
-		
 		this.bônus = new Pontos(bonus); 
 	}
 	

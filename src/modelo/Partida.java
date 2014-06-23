@@ -22,6 +22,7 @@ public class Partida {
 		if (j.executor() == tAtual.jogador()) {
 			j.executar();
 			tAtual.passarVez(jogador, oponente);
+			tAtual.jogador().comprarCarta();
 			return true;
 		}
 		return false;
@@ -46,7 +47,7 @@ public class Partida {
 		this.nome = nome;
 		oponenteConectado = false;
 	}
-
+	
 	public boolean conectar(Jogador oponente) {
 		if (!oponenteConectado) {
 			this.oponente = oponente;

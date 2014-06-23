@@ -1,4 +1,7 @@
 package modelo;
+
+import java.util.Collection;
+
 public class Jogador implements Interagível{
 	
 	@Override
@@ -32,12 +35,18 @@ public class Jogador implements Interagível{
 		return mao;
 	}
 	
+	public void comprarCarta(){
+		ExemplarDeCarta e = baralho.comprar();
+		mao.adicionar(e);
+	}
+	
 	public String getLogin(){
 		return conta.getLogin();
 	}
 	
 	public void escolher(Baralho b){
 		baralho = b;
+		baralho.embaralhar();
 	}
 	
 	public Baralho getBaralho(){
