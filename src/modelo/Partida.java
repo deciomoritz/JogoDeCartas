@@ -32,7 +32,7 @@ public class Partida {
 	}
 
 	public boolean terminada() {
-		return !usuario().vivo() || !oponente.vivo();
+		return !(jogador.vivo() && oponente.vivo());
 	}
 
 	public Jogador vencedor() {
